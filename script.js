@@ -24,11 +24,14 @@ const groupSummary = document.getElementById('group-summary');
 const donorCount = document.getElementById('donor-count');
 const developerBtn = document.getElementById('developer-btn');
 const appreciationBtn = document.getElementById('appreciation-btn');
+const appreciationCountEl = document.getElementById('appreciation-count');
 const appreciationLayer = document.getElementById('appreciation-layer');
 const siteFooter = document.querySelector('.site-footer');
 const developerModal = document.getElementById('developer-modal');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const modalBackdrop = document.getElementById('modal-backdrop');
+
+const APPRECIATION_STORAGE_KEY = 'appreciationCount';
 
 let donors = [];
 let filteredDonors = [];
@@ -71,7 +74,7 @@ function setupResourceCards() {
         return;
       }
 
-      if (action === 'blood') {
+      if (action === 'blood' || action === 'blood-donors') {
         bloodSection.hidden = false;
         bloodSection.classList.add('visible');
         bloodSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -119,7 +122,14 @@ function setupAppreciation() {
     return;
   }
 
+  let appreciationCount = getStoredAppreciationCount();
+  renderAppreciationCount(appreciationCount);
+
   appreciationBtn.addEventListener('click', () => {
+    appreciationCount += 1;
+    persistAppreciationCount(appreciationCount);
+    renderAppreciationCount(appreciationCount);
+
     appreciationBtn.classList.add('active');
     setTimeout(() => appreciationBtn.classList.remove('active'), 1000);
 
@@ -144,6 +154,31 @@ function setupAppreciation() {
         'linear-gradient(170deg, #f7fbff 0%, #f2f7ff 45%, #edf5ff 100%)';
     }, 2200);
   });
+}
+
+function getStoredAppreciationCount() {
+  try {
+    const raw = localStorage.getItem(APPRECIATION_STORAGE_KEY);
+    const parsed = Number.parseInt(raw || '0', 10);
+    return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
+  } catch (error) {
+    return 0;
+  }
+}
+
+function persistAppreciationCount(count) {
+  try {
+    localStorage.setItem(APPRECIATION_STORAGE_KEY, String(count));
+  } catch (error) {
+    // Ignore write failures in restricted browsing modes.
+  }
+}
+
+function renderAppreciationCount(count) {
+  if (!appreciationCountEl) {
+    return;
+  }
+  appreciationCountEl.textContent = String(count);
 }
 
 function createAppreciationBursts() {
@@ -367,10 +402,10 @@ function renderTable(rows) {
 
     tr.innerHTML = `
       <td>${escapeHtml(donor.name)}</td>
-      <td>${escapeHtml(donor.phone || '-')}</td>
-      <td>${escapeHtml(donor.address || '-')}</td>
       <td>${escapeHtml(donor.bloodGroup || '-')}</td>
       <td>${escapeHtml(donor.bloodGroupLabel || '-')}</td>
+      <td>${escapeHtml(donor.phone || '-')}</td>
+      <td>${escapeHtml(donor.address || '-')}</td>
     `;
 
     donorTableBody.appendChild(tr);

@@ -22,11 +22,21 @@
     </header>
 
     <main class="site-shell">
-        <section class="section visible" aria-label="Motivational quotes">
-            <div class="quote-ribbon">
-                <article class="quote-chip">"Education is the most powerful weapon to change the world."</article>
-                <article class="quote-chip">"Students united can build a better future."</article>
-                <article class="quote-chip">"Service to students is service to society."</article>
+        <section class="section president-message" aria-labelledby="president-words-title">
+            <div class="president-wrap">
+                <article class="president-words-card">
+                    <h2 class="section-title" id="president-words-title">Words From FSU President</h2>
+                    <p class="section-subtitle">A message to every student from our student leader.</p>
+                    <blockquote class="president-quote">
+                        "Our campus grows stronger when we grow together. Let us keep supporting each other with discipline, compassion, and dedication to learning.
+                        Everything shared here is provided selflessly to ensure your ease and support. We kindly request that no one misuses this information.
+                        the blood group details and contact numbers listed here can be life saving during emergencies for you, your family, your relatives, and your neighbors. Please never hesitate to share this information to those people who are in need of this service within your community, provided it is used responsibly."
+                    </blockquote>
+                    <p class="president-sign">- Srijit Jung Dhungana</p>
+                </article>
+                <figure class="president-photo-wrap">
+                    <img class="president-photo" src="srijit.jpeg" alt="Srijit Dhungana, FSU President">
+                </figure>
             </div>
         </section>
 
@@ -37,46 +47,41 @@
             </p>
 
             <div class="resource-grid">
-                <button class="resource-card" data-href="https://indrachandracampus.edu.np/" type="button">
-                    <span class="card-icon" aria-hidden="true">🌐</span>
-                    <h3 class="card-title">View Campus Website</h3>
-                    <p class="card-quote">"Stay connected with your academic home."</p>
-                    <span class="inline-pill">Open Link</span>
-                </button>
-
                 <button class="resource-card" data-action="fsu-works" type="button">
                     <span class="card-icon" aria-hidden="true">🏛️</span>
                     <h3 class="card-title">View FSU Works</h3>
                     <p class="card-quote">"Leadership through service."</p>
                     <span class="inline-pill">Coming Soon</span>
                 </button>
-
+                <button class="resource-card" data-action="blood-donors" type="button">
+                    <span class="card-icon" aria-hidden="true">🩸</span>
+                    <h3 class="card-title">View Blood Donors List</h3>
+                    <p class="card-quote">"Donate blood, share life, support community."</p>
+                    <span class="inline-pill">Open Directory</span>
+                </button>
                 <button class="resource-card" data-action="bbs-notes" type="button">
                     <span class="card-icon" aria-hidden="true">📘</span>
                     <h3 class="card-title">View BBS Notes</h3>
                     <p class="card-quote">"Knowledge shared is knowledge multiplied."</p>
                     <span class="inline-pill">Coming Soon</span>
                 </button>
-
                 <button class="resource-card" data-action="mbs-notes" type="button">
                     <span class="card-icon" aria-hidden="true">🎓</span>
                     <h3 class="card-title">View MBS Notes</h3>
                     <p class="card-quote">"Learn today, lead tomorrow."</p>
                     <span class="inline-pill">Coming Soon</span>
                 </button>
-
+                <button class="resource-card" data-href="https://indrachandracampus.edu.np/" type="button">
+                    <span class="card-icon" aria-hidden="true">🌐</span>
+                    <h3 class="card-title">View Campus Website</h3>
+                    <p class="card-quote">"Stay connected with your academic home."</p>
+                    <span class="inline-pill">Open Link</span>
+                </button>
                 <button class="resource-card" data-href="https://student.exam.tu.edu.np" type="button">
                     <span class="card-icon" aria-hidden="true">🧾</span>
                     <h3 class="card-title">View Student Portal</h3>
                     <p class="card-quote">"Access your academic journey."</p>
                     <span class="inline-pill">Open Link</span>
-                </button>
-
-                <button class="resource-card" data-action="blood" type="button">
-                    <span class="card-icon" aria-hidden="true">🩸</span>
-                    <h3 class="card-title">View Blood Donors List</h3>
-                    <p class="card-quote">"Donate blood, share life, support community."</p>
-                    <span class="inline-pill">Open Directory</span>
                 </button>
             </div>
         </section>
@@ -136,10 +141,11 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Phone</th>
-                            <th>Address</th>
                             <th>Blood Group</th>
                             <th>Full Form</th>
+
+                            <th>Phone</th>
+                            <th>Address</th>
                         </tr>
                     </thead>
                     <tbody id="donor-table-body"></tbody>
