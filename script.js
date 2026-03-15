@@ -23,6 +23,7 @@ const donorCount = document.getElementById('donor-count');
 const developerBtn = document.getElementById('developer-btn');
 const appreciationBtn = document.getElementById('appreciation-btn');
 const appreciationLayer = document.getElementById('appreciation-layer');
+const siteFooter = document.querySelector('.site-footer');
 const developerModal = document.getElementById('developer-modal');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const modalBackdrop = document.getElementById('modal-backdrop');
@@ -118,13 +119,19 @@ function setupAppreciation() {
 
   appreciationBtn.addEventListener('click', () => {
     appreciationBtn.classList.add('active');
-    setTimeout(() => appreciationBtn.classList.remove('active'), 700);
+    setTimeout(() => appreciationBtn.classList.remove('active'), 1000);
 
-    document.body.style.transition = 'background 0.6s ease';
+    if (siteFooter) {
+      siteFooter.classList.add('appreciated');
+      setTimeout(() => siteFooter.classList.remove('appreciated'), 1850);
+    }
+
+    document.body.style.transition = 'background 0.8s ease';
     document.body.style.background =
-      'radial-gradient(circle at 8% 4%, rgba(255, 220, 120, 0.26), transparent 36%),' +
-      'radial-gradient(circle at 87% 8%, rgba(60, 123, 214, 0.2), transparent 35%),' +
-      'linear-gradient(170deg, #fbfcff 0%, #f1f7ff 45%, #edf5ff 100%)';
+      'radial-gradient(circle at 8% 4%, rgba(255, 220, 120, 0.36), transparent 36%),' +
+      'radial-gradient(circle at 87% 8%, rgba(60, 123, 214, 0.26), transparent 35%),' +
+      'radial-gradient(circle at 45% 84%, rgba(255, 188, 81, 0.24), transparent 36%),' +
+      'linear-gradient(170deg, #fcfdff 0%, #eef7ff 42%, #e9f2ff 100%)';
 
     createAppreciationBursts();
 
@@ -133,26 +140,27 @@ function setupAppreciation() {
         'radial-gradient(circle at 10% 0%, rgba(60, 123, 214, 0.18), transparent 40%),' +
         'radial-gradient(circle at 90% 12%, rgba(31, 159, 255, 0.14), transparent 32%),' +
         'linear-gradient(170deg, #f7fbff 0%, #f2f7ff 45%, #edf5ff 100%)';
-    }, 1400);
+    }, 2200);
   });
 }
 
 function createAppreciationBursts() {
-  const burstCount = 100;
+  const burstCount = 170;
 
   for (let i = 0; i < burstCount; i += 1) {
     const node = document.createElement('span');
     node.className = 'appreciation-burst';
     node.style.left = `${Math.random() * 100}%`;
     node.style.top = `${78 + Math.random() * 18}%`;
-    node.style.animationDelay = `${Math.random() * 0.22}s`;
+    node.style.animationDelay = `${Math.random() * 0.34}s`;
     node.style.transform = `translateY(0) scale(${0.45 + Math.random() * 0.9})`;
+    node.style.filter = `hue-rotate(${Math.floor(Math.random() * 24)}deg)`;
 
     appreciationLayer.appendChild(node);
 
     setTimeout(() => {
       node.remove();
-    }, 1400);
+    }, 2600);
   }
 }
 
