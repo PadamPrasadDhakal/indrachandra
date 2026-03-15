@@ -739,20 +739,71 @@ img {
   }
 
   .quote-ribbon,
-  .resource-grid,
-  .group-summary {
+  .resource-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Keep group-summary at 2 cols on phones — more readable than 1 */
+  .group-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .section {
     margin-block: 1.8rem;
   }
 
+  /* Remove fixed height so cards don't feel bloated on mobile */
+  .resource-card {
+    min-height: auto;
+  }
+
+  /* Allow blood description to wrap on narrow screens */
+  .blood-desc {
+    white-space: normal;
+  }
+
+  /* Allow social chips to wrap on small screens */
+  .social-links {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  /* Center footer content on mobile */
   .footer-inner {
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-actions {
+    justify-content: center;
   }
 
   .table-shell {
     max-height: 55vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-card {
+    padding: 1.1rem 0.8rem;
+  }
+
+  .developer-btn {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.875rem;
+  }
+
+  .modal-card {
+    padding: 1rem 0.85rem;
+  }
+
+  /* Allow "Socials:" label + chips to stack on very small phones */
+  .socials-row {
+    flex-wrap: wrap;
+  }
+
+  .data-caution {
+    font-size: 0.85rem;
   }
 }
