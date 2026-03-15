@@ -345,7 +345,6 @@ function renderGroupSummary(rows) {
     card.className = 'group-card';
     card.innerHTML = `
       <p class="group-key">${group}</p>
-      <p class="group-full">${BLOOD_GROUP_FULL_FORM[group]}</p>
       <p class="group-count">${count} donor${count === 1 ? '' : 's'}</p>
     `;
     groupSummary.appendChild(card);
