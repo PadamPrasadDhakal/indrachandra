@@ -3,10 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="FSU 2081 Team student support portal for Indrachandra Campus, Birtamode.">
+    <title>FSU 2081 Team | Indrachandra Campus</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>This is simple website of indrachandra campus project</h1>
-    <img src="images/image.png" alt="Image">
+    <header class="hero">
+        <img class="hero-media" src="indrachandra.jpg" alt="Indrachandra Campus">
+        <div class="hero-content">
+            <article class="hero-card">
+                <h1 class="hero-title">Welcome to the Gift of Indrachandra FSU to You</h1>
+                <p class="hero-subtitle">
+                    FSU 2081 Team – Indrachandra Campus, Birtamode<br>
+                    Serving Students, Sharing Knowledge, Building Community
+                </p>
+            </article>
+        </div>
+    </header>
+
+    <main class="site-shell">
+        <section class="section visible" aria-label="Motivational quotes">
+            <div class="quote-ribbon">
+                <article class="quote-chip">"Education is the most powerful weapon to change the world."</article>
+                <article class="quote-chip">"Students united can build a better future."</article>
+                <article class="quote-chip">"Service to students is service to society."</article>
+            </div>
+        </section>
+
+        <section class="section" id="resources" aria-labelledby="resources-title">
+            <h2 class="section-title" id="resources-title">Student Resource Hub</h2>
+            <p class="section-subtitle">
+                Quick access to campus services, notes, and student support tools, thoughtfully curated by the FSU 2081 Team.
+            </p>
+
+            <div class="resource-grid">
+                <button class="resource-card" data-href="https://indrachandracampus.edu.np/" type="button">
+                    <span class="card-icon" aria-hidden="true">🌐</span>
+                    <h3 class="card-title">View Campus Website</h3>
+                    <p class="card-quote">"Stay connected with your academic home."</p>
+                    <span class="inline-pill">Open Link</span>
+                </button>
+
+                <button class="resource-card" data-action="fsu-works" type="button">
+                    <span class="card-icon" aria-hidden="true">🏛️</span>
+                    <h3 class="card-title">View FSU Works</h3>
+                    <p class="card-quote">"Leadership through service."</p>
+                    <span class="inline-pill">Coming Soon</span>
+                </button>
+
+                <button class="resource-card" data-action="bbs-notes" type="button">
+                    <span class="card-icon" aria-hidden="true">📘</span>
+                    <h3 class="card-title">View BBS Notes</h3>
+                    <p class="card-quote">"Knowledge shared is knowledge multiplied."</p>
+                    <span class="inline-pill">Coming Soon</span>
+                </button>
+
+                <button class="resource-card" data-action="mbs-notes" type="button">
+                    <span class="card-icon" aria-hidden="true">🎓</span>
+                    <h3 class="card-title">View MBS Notes</h3>
+                    <p class="card-quote">"Learn today, lead tomorrow."</p>
+                    <span class="inline-pill">Coming Soon</span>
+                </button>
+
+                <button class="resource-card" data-href="https://student.exam.tu.edu.np" type="button">
+                    <span class="card-icon" aria-hidden="true">🧾</span>
+                    <h3 class="card-title">View Student Portal</h3>
+                    <p class="card-quote">"Access your academic journey."</p>
+                    <span class="inline-pill">Open Link</span>
+                </button>
+
+                <button class="resource-card" data-action="blood" type="button">
+                    <span class="card-icon" aria-hidden="true">🩸</span>
+                    <h3 class="card-title">View Blood Donors List</h3>
+                    <p class="card-quote">"Donate blood, share life, support community."</p>
+                    <span class="inline-pill">Open Directory</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="section" id="fsu-works" hidden>
+            <h2 class="section-title">FSU Works</h2>
+            <p class="section-subtitle">Updates from student leadership initiatives will appear here soon.</p>
+            <div class="placeholder-grid">
+                <article class="placeholder-card">Community outreach programs and semester-wise progress reports.</article>
+                <article class="placeholder-card">Student grievance facilitation and support service highlights.</article>
+            </div>
+        </section>
+
+        <section class="section" id="bbs-notes" hidden>
+            <h2 class="section-title">BBS Notes</h2>
+            <p class="section-subtitle">Curated and verified BBS study materials are being organized for upload.</p>
+            <div class="placeholder-grid">
+                <article class="placeholder-card">Subject-wise chapter notes with exam-focused summaries.</article>
+                <article class="placeholder-card">Model questions and revision checklists for smart preparation.</article>
+            </div>
+        </section>
+
+        <section class="section" id="mbs-notes" hidden>
+            <h2 class="section-title">MBS Notes</h2>
+            <p class="section-subtitle">Advanced MBS resources will be available with practical and research references.</p>
+            <div class="placeholder-grid">
+                <article class="placeholder-card">Core papers, strategic management notes, and research techniques.</article>
+                <article class="placeholder-card">Presentation material and assessment preparation resources.</article>
+            </div>
+        </section>
+
+        <section class="section blood-directory" id="blood-directory" hidden>
+            <h2 class="blood-header" id="rakta">रक्तदान जीवनदान</h2>
+            <p class="blood-desc">
+                This social service is carried out by FSU, Indrachandra Campus and Indrachandra Campus.
+            </p>
+
+            <div class="controls">
+                <input
+                    id="search-input"
+                    class="control-input"
+                    type="search"
+                    placeholder="Search by Name, Phone, Address, or Blood Group"
+                    aria-label="Search donors"
+                >
+                <select id="blood-group-filter" class="control-select" aria-label="Filter by blood group">
+                    <option value="">All Blood Groups</option>
+                </select>
+            </div>
+
+            <div class="group-summary" id="group-summary" aria-live="polite"></div>
+
+            <p class="section-subtitle">Total matching donors: <strong id="donor-count">0</strong></p>
+
+            <div class="table-shell">
+                <table class="donor-table" aria-label="Blood donor directory">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Blood Group</th>
+                            <th>Full Form</th>
+                        </tr>
+                    </thead>
+                    <tbody id="donor-table-body"></tbody>
+                </table>
+            </div>
+
+            <p id="empty-state" class="empty-state" hidden>No donors found.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© 2081 FSU Team – Indrachandra Campus, Birtamode</p>
+            <div class="footer-actions">
+                <button id="appreciation-btn" class="developer-btn appreciation-btn" type="button">Appreciate the effort</button>
+                <button id="developer-btn" class="developer-btn" type="button">View Developer</button>
+            </div>
+        </div>
+    </footer>
+
+    <div id="appreciation-layer" class="appreciation-layer" aria-hidden="true"></div>
+
+    <div id="developer-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="developer-modal-title">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <article class="modal-card">
+            <div class="modal-top">
+                <div>
+                    <div class="profile-badge" aria-hidden="true">👨‍💻</div>
+                </div>
+                <button id="modal-close-btn" class="close-btn" type="button" aria-label="Close developer card">✕</button>
+            </div>
+
+            <h2 id="developer-modal-title" class="section-title">Developer</h2>
+            <ul class="dev-list">
+                <li><strong>Name:</strong> Padam Prasad Dhakal</li>
+                <li><strong>Skills:</strong> Fullstack Development, AI/ML Engineer, Robotics</li>
+                <li><strong>Contact:</strong> +9779749241125</li>
+                <li><strong>Email:</strong> <a href="mailto:study.sdhakal@gmail.com">study.sdhakal@gmail.com</a></li>
+                <li><strong>Address:</strong> Mechinagar-11, Dhaijanmode</li>
+            </ul>
+        </article>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
